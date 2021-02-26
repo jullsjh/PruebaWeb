@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pruebas de Animaciones</title>
+</head>
+<body>
+
+    <p><b>Ejemplo 1:</b> Solo cambia de color, 2 colores, durante 4seg:</p>
+    <div class="color1"></div>
+
+    <br>
+    <br>
+    <br>
+
+    <p><b>Ejemplo 2:</b> Cambia de color, 4 colores, durante 8seg:</p>
+    <div class="color2"></div>
+
+    <br>
+    <br>
+    <br>
+
+    <p><b>Ejemplo 3:</b> Cambia de color 5 veces y se mueve:</p>
+    <div class="animation"></div>
+
+
+    <style> 
+        .color1 
+        {
+          width: 100px;
+          height: 100px;
+          background-color: blue;
+          /* IMPORTANTE ESTAS 2 LINEAS DE ABAJO
+          Nombre de la animacion: */
+          animation-name: color1;
+          animation-duration: 4s;
+          /* En el momento que abrimos el navegador, pasados 4seg, empezará la animación: */
+          animation-delay: 2s;
+          /* Si nuestra animacion dura 4seg, empieza en el keyframe 2seg
+          animation-delay: -2s; */
+        }
+        
+        /* LO IMPORTANTE para hacer una animacion es el KEYFRAME */
+        @keyframes color1 
+        {
+            /* FROM= LAS CARACTERISTAS DEL KEYFRAME DE PARTIDA || TO= CARACTERISTICAS DEL KEYFRAME DE SALIDA O EL ULTIMO */
+            from {background-color: blue;}
+            to {background-color: yellow;}
+        }
+
+
+
+        .color2 
+        {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            animation-name: color2;
+            animation-duration: 8s;
+            /* Nº de veces que quiero que se repita */
+            animation-iteration-count: 2;
+            /* Esta función controla la rapidez con la que cambia de frame */
+            animation-timing-function: linear;
+        }
+
+        @keyframes color2 
+        {
+            0%   {background-color: pink;}
+            25%  {background-color: green;}
+            50%  {background-color: blue;}
+            100% {background-color: green;}
+        }
+
+
+
+        .animation 
+        {
+            width: 100px;
+            height: 100px;
+            background-color: yellow;
+            position: relative;
+            animation-name: animation;
+            animation-duration: 4s;
+            animation-iteration-count: infinite;
+            /* Primero hace la direccion normal, y luego al revés, y así todo el rato */
+            animation-direction: alternate;
+        }
+
+        @keyframes animation 
+        {
+            /* Separación 0,0 */
+            0%   {background-color:yellow; left:0px; top:0px;}
+            /* Avanza a la derecha */
+            25%  {background-color:yellowgreen; left:200px; top:0px;}
+            /* Séparate 200px a la izq y BAJA 200px  */
+            50%  {background-color:blue; left:200px; top:200px;}
+            /* Vuelve a la izq */
+            75%  {background-color:green; left:0px; top:200px;}
+            /* Posición inicial */
+            100% {background-color:red; left:0px; top:0px;}
+        }
+    </style>
+
+
+    
+
+</body>
+</html>
